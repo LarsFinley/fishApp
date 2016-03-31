@@ -10,3 +10,4 @@ Configured For:
 Tips:
   When doing server dev, simply start server with nodemon.
   When doing client dev, npm run build && npm run start# fishApp
+# fishApp
