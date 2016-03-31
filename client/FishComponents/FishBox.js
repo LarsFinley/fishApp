@@ -1,6 +1,7 @@
 var React = require('react');
-var FishList = require('./FishList');
+var FishListData = require('./FishListData');
 var FishForm = require('./FishForm');
+
 //FishBox
 	//Toggler
 	//FishList
@@ -30,11 +31,11 @@ var FishBox = React.createClass({
 	showComp: function() {
 		//this function returns one function based on activeComp state
 		if(this.state.activeComponent === 'fish'){
-			return <FishList fishArray={ this.props.fishArray }/>
+			return <FishListData/>
 		} else if (this.state.activeComponent === 'form') {
 				return <FishForm submitFishToServer={ this.props.submitFishToServer }/>
 		} else {
-			return <FishList fishArray={ this.props.fishArray }/>
+			throw new Error("Invalid active component", this.state.activeComponent)
 		}
 	},
 		toggleActiveComp: function(name){
@@ -42,10 +43,10 @@ var FishBox = React.createClass({
 		},
 		render: function() {
 			return (
-				<div className="container myContainer">
-					<Toggler toggleActiveComp={ this.toggleActiveComp }/>
-					{ this.showComp() }
-				</div>
+				<div>
+					<Toggler toggleActiveComp={this.toggleActiveComp}/>
+					{ this.showComp }
+				</div>	
 			)
 	}
 });

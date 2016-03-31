@@ -3,8 +3,7 @@ var FishCard = require('./FishCard');
 //FishBox
 	//FishList
 		//FishCard
-var FishList = React.createClass({
-	render: function(){
+function FishList(props) {
 		//map through data and pass it to fish card; 
 		var fishList = this.props.fishArray.map(function(item) {
 			return(
@@ -23,5 +22,9 @@ var FishList = React.createClass({
 			)
 	}
 });
+
+FishList.propTypes = {
+	fishArray: react.PropTypes.array.isRequired
+};
 
 module.exports = FishList;
