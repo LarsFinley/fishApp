@@ -1,6 +1,6 @@
 var React = require('react');
 var FishList = require('./FishList');
-var Loader = require('./Loader');
+var Loader = require('../Loader');
 
 var FishListData = React.createClass({
 
@@ -11,20 +11,16 @@ var FishListData = React.createClass({
 	},
 	loadAllFishFromServer: function() {
 		var self = this;
-		//got get all fish from server
 		$.ajax({
 			url: '/api/fish',
 			method: 'GET',
-		}).done(function(data) {
-			//update fish state with data
-			self.setState({fishArray: data});
-		})
+		}).done(data => this.setState({allFish: data}));
 	},
 	componentDidMount: function() {
 		this.loadAllFishFromServer();
 	},
 	render: function() {
-		return this.state.allFish ? <FishList fishArray={this.state.allFish}/> : <Loader/>
+		return this.state.allFish ? <FishList fishArray={this.state.allFish} getId={ this.props.getId } /> : <Loader/>
 	}
 });
 

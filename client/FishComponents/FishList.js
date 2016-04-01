@@ -5,14 +5,16 @@ var FishCard = require('./FishCard');
 		//FishCard
 function FishList(props) {
 		//map through data and pass it to fish card; 
-		var fishList = this.props.fishArray.map(function(item) {
+		var fishList = props.fishArray.map(item => {
 			return(
 			    <FishCard
-					name={ item.name }
-					color={ item.color }
-					people_eater={ item.people_eater }
-					length={ item.length }
-					img={ item.img } />
+			    getId= { props.getId }
+			    id= { item._id }
+					name= { item.name }
+					color= { item.color }
+					people_eater= { item.people_eater }
+					length= { item.length }
+					img= { item.img } />
 				);
 		})
 		return (
@@ -21,10 +23,9 @@ function FishList(props) {
 			</div>	
 			)
 	}
-});
 
 FishList.propTypes = {
-	fishArray: react.PropTypes.array.isRequired
+	fishArray: React.PropTypes.array.isRequired
 };
 
 module.exports = FishList;
