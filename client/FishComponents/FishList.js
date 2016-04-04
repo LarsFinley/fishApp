@@ -1,13 +1,22 @@
+/*
+// FishApp
+//     FishBox
+//         FishData
+//             FishList
+//                 FishCard
+//         FishFormData
+//             FishForm
+*/
 var React = require('react');
 var FishCard = require('./FishCard');
-//FishBox
-	//FishList
-		//FishCard
+
+
 function FishList(props) {
 		//map through data and pass it to fish card; 
 		var fishList = props.fishArray.map(item => {
 			return(
 			    <FishCard
+			    deleteFish= { props.deleteFish }
 			    getId= { props.getId }
 			    id= { item._id }
 					name= { item.name }

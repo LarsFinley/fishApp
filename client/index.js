@@ -7,7 +7,7 @@ var Cookies = require('./cookies.js');
 var FishApp = require('./fishApp.js');
 var Bears = require('./bears.js');
 var Beer = require('./beer.js');
-
+var Notifier = require('./Notifier');
 
 require('./stylesheets/main.scss');
 
@@ -48,11 +48,13 @@ var App = React.createClass({
   render: function() {
     return (
       <div>
-      	<NavBar setActiveComponent={ this.setActiveComponent }/>
-      		<div>
-      			{ this.showWhichComponent() }
-      		</div>	
-        <Footer/>      
+      	<Notifier>
+	      	<NavBar setActiveComponent={ this.setActiveComponent }/>
+	      		<div>
+	      			{ this.showWhichComponent() }
+	      		</div>	
+	        <Footer/> 
+	       </Notifier>     
       </div>
       )
   }

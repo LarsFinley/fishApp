@@ -1,3 +1,12 @@
+/*
+// FishApp
+//     FishBox
+//         FishData
+//             FishList
+//                 FishCard
+//         FishFormData
+//             FishForm
+*/
 var React = require('react');
 var FishForm = require('./FishForm');
 
@@ -12,8 +21,11 @@ var FishFormData = React.createClass({
 				imgUrl: null,
 			}
 		},
-			onNameChange: function(e) {
-		this.setState({ fishName: e.target.value })
+		contextTypes: {
+			sendNotification: React.PropTypes.func.isRequired
+		},
+		onNameChange: function(e) {
+			this.setState({ fishName: e.target.value })
 		},
 		onColorChange: function(e) {
 			this.setState({ fishColor: e.target.value })
@@ -24,7 +36,6 @@ var FishFormData = React.createClass({
 		onUrlChange: function(e) {
 			this.setState({ imgUrl: e.target.value })
 		},
-
 		people_eater: function(e) {
 			console.log(e.target.value);
 			this.setState({ people_eater: e.target.value })
@@ -48,6 +59,7 @@ var FishFormData = React.createClass({
 			}).done(function(data) {
 				console.log(data);
 				self.props.toggleActiveComp('fish');//we want it to redirect to the fish page
+				self.context.sendNotification("Hey you added a fish!!!!!");
 			});
 
 			this.setState({fishName: '', fishColor: '', fishLength:'', imgUrl: ''});
